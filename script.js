@@ -62,13 +62,64 @@ class LinkedList {
     return temp;
     // return temp - the node we are Popping off from the end of the LL.
   }
+    //  unshift
+    unshift(value) {
+        const newNode = new Node(value);
+        // create new node - value will be argument passed to unshift().
+        newNode.next = this.head
+        // sets 'next' of new node to the current value of first node in LL
+        this.head = newNode
+        // set 'head' to the new node. this moves the head property from the new node rather than the prev. head.
+        this.length++
+        // increase length by 1
+        return this
+         // return entire LL which now has the newNode at the 'head' position.
+    }
+    shift() {
+        if (!this.head) return undefined
+        // if empty LL
+        const toShift = this.head
+        // capture the current head in a variable for use later
+        this.head = this.head.next
+        // set head to head.next - the node after head
+        toShift.next = null
+        // sets next property of toShift to null
+        if (this.length === 1) {
+            this.head = null
+            this.tail = null
+        }
+        // edge case : if we are dealing with a LL with just one node, set head/tail properties to null (there will be no nodes left to be pointed to by these props)
+        this.length--
+        // reduce length by 1
+        return toShift
+         // if LL had 1 node, make sure head/tail are set to null after shift()
+
+    }
+    // GET
+    get(index) {
+        // index will be the index within the LL we are looking for
+        if (index < 0 || index >= this.length) return undefined
+        // edge case - if the index requested is less than 0 or greater than or equal to the length of the LL, return undefined (these values won't exist)
+        let temp = this.head
+        // assign value of this.head to a temp variable
+        for (let i = 0; i < index; i++ ) {
+            // iterate up from 0 while i is less than the index w'ere looking for.
+            temp = temp.next
+            // on each iteration, set temp to temp.next (the next node in sequence in LL). stop when i === index.
+        }
+        return temp
+        // return temp, which will be the value found at the index we have set as an argument in get()
+    }
 }
 
 const ll = new LinkedList(1);
 
-ll.push(4);
-ll.push(7);
+ll.push(4)
+ll.push(7)
+ll.push(9)
 
-ll.pop();
+
+
+ll.get(3);
 
 console.log(ll);
