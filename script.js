@@ -30,7 +30,6 @@ class LinkedList {
     }
     this.length++;
     // increase length by 1
-    console.log(this);
     return this;
     // return entire LL.
   }
@@ -53,7 +52,6 @@ class LinkedList {
     // we set tail.next to null, so it becomes the last node in the LL - its 'next' is not pointing to anything.
     this.length--;
     // reudce length by 1.
-    console.log(temp);
     if (this.length === 0) {
       this.head = null;
       this.tail = null;
@@ -130,7 +128,9 @@ class LinkedList {
         // use unshift if we want to put the new node at index 0
         if (index === this.length) return this.push(value)
         // use push if we want to put the new node at the end of the array
-        if (index < 0 || index >= this.length) return console.log('nah')
+        if (index < 0 || index >= this.length) { 
+            console.log('nah'); return false
+    }
         // 'nah'
         let i = this.get(index -1)
         // i is the index BEFORE the index we want to insert the node into
@@ -139,11 +139,53 @@ class LinkedList {
             // sets the .next property of the new node to the .next of the current node taking the index before the space we want to occupy with the new node (wordiest sentence ever)
             i.next = newNode
             // sets the .next property of the index -1  node to the new node. these two steps effectively insert the new node into the spot we want it to go.
-            console.log(i)
+            this.length++
             return true
         }
         return false
     }
+    // REMOVE
+    // i wrote this w/o using shift or pop because i thought the instructor wanted us to literally 'delete' the removed node..not return it. 
+    remove(index) {
+        
+        if (index < 0 || index >= this.length) { 
+            console.log('nah'); return false
+            }
+        let i = this.get(index)
+        // set temp variable to index passed to remove()
+        if (index===0) {
+            this.head = i.next
+            // set the head to the node with an index of 1
+            i.next = null;
+            // break i off from chain by setting its next to null
+            this.length--
+            // decrement length by 1
+            return i
+            // return the removed node
+        }
+        let i2 = this.get(index - 1)
+        // if index not 0, there will be an index before it, so can define i2 variable as index - 1
+         if (index === this.length - 1) {
+            //  if index is the node in the last index position..
+             i2.next = null
+            //  set the .next property of the  node before it (2nd last node) to null
+             this.tail = i2
+            //  set the tail property to the 2nd last node
+        
+        }
+        else {
+            // any other number in the LL..
+            i2.next = i.next
+            // set the .next of i2 to the .next of i, joining those two nodes and breaking off the removed node
+        }
+            i.next = null 
+            //  set i.next to null
+            this.length--
+            console.log(i)
+            return i
+    }
+    // note: i want to revisit this and make sure I am following big O
+    
 }
 
 const ll = new LinkedList(1);
@@ -154,6 +196,6 @@ ll.push(9)
 
 
 
-ll.insert(-1, 1);
+ll.remove(2)
 
 console.log(ll);
