@@ -110,6 +110,40 @@ class LinkedList {
         return temp
         // return temp, which will be the value found at the index we have set as an argument in get()
     }
+// SET
+    set(index, value) {
+        let i = this.get(index)
+        // i is a temp variable which is set equal to an index we Get using the Get method.
+        if (i) {
+        i.value = value
+        // change the value of the i to the value passed in as an arugment
+        return true}
+        else {
+            return false
+        }
+    }
+    // INSERT
+    insert(index, value) {
+        const newNode = new Node(value);
+        // create a new node
+        if (index === 0) return this.unshift(value)
+        // use unshift if we want to put the new node at index 0
+        if (index === this.length) return this.push(value)
+        // use push if we want to put the new node at the end of the array
+        if (index < 0 || index >= this.length) return console.log('nah')
+        // 'nah'
+        let i = this.get(index -1)
+        // i is the index BEFORE the index we want to insert the node into
+        if (i) {
+            newNode.next = i.next
+            // sets the .next property of the new node to the .next of the current node taking the index before the space we want to occupy with the new node (wordiest sentence ever)
+            i.next = newNode
+            // sets the .next property of the index -1  node to the new node. these two steps effectively insert the new node into the spot we want it to go.
+            console.log(i)
+            return true
+        }
+        return false
+    }
 }
 
 const ll = new LinkedList(1);
@@ -120,6 +154,6 @@ ll.push(9)
 
 
 
-ll.get(3);
+ll.insert(-1, 1);
 
 console.log(ll);
