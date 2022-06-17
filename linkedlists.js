@@ -185,7 +185,25 @@ class LinkedList {
             return i
     }
     // note: i want to revisit this and make sure I am following big O
-    
+
+    // REVERSE
+    reverse() {
+        let temp = this.head
+        // sets 'temp' to the current value of this.head
+        this.head = this.tail 
+        // sets this.head to the current value of this.tail
+        this.tail = temp
+        // sets this.tail to the saved, original this.head
+        let prev = null
+        let next = temp.next
+        for (let i=0; i < this.length; i++) {
+        next = temp.next
+        temp.next = prev;
+        prev = temp
+        temp = next
+        }
+        return this
+    }
 }
 
 const ll = new LinkedList(1);
@@ -196,6 +214,6 @@ ll.push(9)
 
 
 
-ll.remove(2)
+ll.reverse()
 
 console.log(ll);
