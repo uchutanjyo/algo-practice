@@ -14,5 +14,13 @@ function add(x, y) {
     }
     return sum
   }
+
+
+  function stringIncludes(x, y) {
+    x = x.toLowerCase()
+    y = y.toLowerCase()
+   const stringIncludesY = x.includes(y) ? true : false
+   return stringIncludesY
+  }
   
-  console.log(sum(1, 1, 1, 6, 9, 12))
+  console.log(stringIncludes('yo Man', 'mAn'))
