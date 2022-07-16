@@ -211,6 +211,7 @@ class DoublyLinkedList {
     }
 }
 
+
 const ll = new DoublyLinkedList(1);
 
 ll.push(4)
@@ -218,4 +219,4 @@ ll.push(5)
 
 ll.pop()
 
-console.log(ll);
+
