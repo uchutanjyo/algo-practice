@@ -22,5 +22,27 @@ function add(x, y) {
    const stringIncludesY = x.includes(y) ? true : false
    return stringIncludesY
   }
+
+
+  function getName(arr) {
+    let newArr = []
+    arr.forEach((obj) =>  {
+    let index = Object.keys(obj)[0]
+    if (index == 'name') {
+        newArr.push(Object.values(obj)[0])
+    }
+  })
+  return newArr
+  }
   
-  console.log(stringIncludes('yo Man', 'mAn'))
+  function customFlatten(arr, depth) {
+    let result = [];
+    arr.forEach((ar) => {
+      if (Array.isArray(ar) && depth >0) {
+        result.push(...customFlatten(ar, depth - 1)) 
+      } else result.push(ar)
+    })
+    return result
+  }
+  
+console.log(customFlatten([1,3,6,[1,2,[1,2]]], 1))
