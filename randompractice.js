@@ -39,10 +39,30 @@ function add(x, y) {
     let result = [];
     arr.forEach((ar) => {
       if (Array.isArray(ar) && depth >0) {
-        result.push(...customFlatten(ar, depth - 1)) 
+        // spreads result of function call 
+        result.push(...customFlatten(ar, depth - 1))  
       } else result.push(ar)
     })
     return result
   }
-  
-console.log(customFlatten([1,3,6,[1,2,[1,2]]], 1))
+
+  let pre = [1, 2, 3];
+let post = [4,5, 6];
+let combined = [...pre, 4, ...post];  // combined = [1, 2, 3, 4, 5, 6];
+
+// 
+const person = {
+  name: 'Matt',
+  hello: function(thing, O) {
+    console.log(`${this.name} says hello ${thing} ${O}`)
+  }
+}
+
+const person2 = {
+  name: 'Yuko',
+
+}
+
+person.hello('world', 'WO')
+
+person.hello.call(person2, 'Hell', 'WAGWAN')
