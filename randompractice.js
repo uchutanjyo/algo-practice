@@ -66,3 +66,49 @@ const person2 = {
 person.hello('world', 'WO')
 
 person.hello.call(person2, 'Hell', 'WAGWAN')
+
+const newHello = person.hello.bind(person2)
+
+
+
+//  async function yoyo() {
+//   const promise = new Promise((res, rej) => {
+//     setTimeout(() => {
+//     res(console.log('YOYO'));
+//     }, 1000)
+//   })
+//   console.log('before')
+// const result = await promise
+// console.log('after', result)
+// }
+
+// async function ya () {
+//  const ok = await yoyo()
+//  console.log(ok)
+// }
+
+
+const arr = [1,2,5,7,8]
+
+const arr2 = [1, 1]
+
+function filterOdd(ar) {
+ const newArr = ar.filter((item) => {
+  return item % 2 === 0
+ })
+ return newArr
+}
+
+
+function arrayPlusIndex(ar) {
+    let newArr = [];
+  for (let i=0; i < ar.length; i++) {
+    let item = ar[i] + Number([i])
+
+    newArr.push(item)
+  }
+  return newArr;
+}
+
+console.log(arrayPlusIndex(arr2))
+
