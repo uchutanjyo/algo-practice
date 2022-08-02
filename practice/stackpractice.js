@@ -17,7 +17,7 @@ class Stack {
         this.length = 1;
     }
     // similar to unshift in LL
-    push() {
+    push(value) {
         const newNode = new Node(value)
         if (this.length === 0) {
             this.top = newNode
@@ -29,8 +29,31 @@ class Stack {
         this.length++
         return this
     }
+    pop() {
+        if (this.length === 0) return undefined
+            let temp = this.top;
+            this.top = temp.next
+            temp.next = null;
+            this.length--
+        if (this.length === 1) {
+            this.top = null
+        }
+        console.log(temp)
+        return temp
+    }
+
 }
 
+
+
 let newStack = new Stack(22)
+
+// newStack.push(1)
+
+// newStack.push(2)
+
+// newStack.push(3)
+
+newStack.pop()
 
 console.log(newStack)
