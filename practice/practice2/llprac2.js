@@ -87,12 +87,34 @@ class LinkedList {
        }
        return false
     }
-    
+    insert(index, value) {
+        if (index === 0) return this.unshift(value)
+        if (index === this.length) return this.push(value)
+        if (index < 0 || index > this.length) return false
+        const newNode = new Node(value) 
+        const temp = this.get(index - 1)
+        newNode.next = temp.next
+        temp.next = newNode
+        this.length++
+        return true
+    }
+    remove(index) {
+        if (index < 0 || index >= this.length) return undefined
+        if (index === 0) return this.shift()
+        if (index === this.length - 1) return this.pop()
+        let before = this.get(index - 1)
+        let temp = before.next
+        before.next = temp.next
+        temp.next = null
+        this.length--
+        return temp
+    }
 }
 
 const ll = new LinkedList(3)
 
-ll.set(0, 2)
+ll.push(4)
+ll.insert(1, 2)
 
 
 
