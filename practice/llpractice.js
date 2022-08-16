@@ -74,6 +74,7 @@ class LinkedList {
         return temp
     }
     get(index) {
+        if (index < 0 || index > index.length) return undefined
         let temp = this.head;
         for (let i = 0; i < index; i++) {
             temp = temp.next

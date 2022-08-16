@@ -63,6 +63,8 @@ function insertionSort(array) {
 }
 
 
+// sort Big O
+// 
 
 let arr1 = [6,2,9,4, 240,5,1, 0]
 
