@@ -109,6 +109,9 @@ class LinkedList {
         this.length--
         return temp
     }
+    reverse() {
+
+    }
 }
 
 const ll = new LinkedList(3)

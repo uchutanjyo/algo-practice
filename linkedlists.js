@@ -197,23 +197,77 @@ class LinkedList {
         let prev = null
         let next = temp.next
         for (let i=0; i < this.length; i++) {
+          // on first iter, next becomes current 'next' of the current head
         next = temp.next
+        // on first iter, temp.next points to null
         temp.next = prev;
+        // on first iter, prev goes from null to the current head
         prev = temp
+        // on first, iter, temp becomes next - which was set to the 2nd index of the head
         temp = next
+        console.log(prev, next, temp)
         }
         return this
     }
+// prac quick
+    reverse2() {
+      let temp = this.head
+      this.head = this.tail
+      this.tail = temp
+      let prev = null
+      let next = temp.next
+      for (let i=0; i=this.length; i++) {
+        next = temp.next
+        temp.next = prev
+        prev = temp
+        temp = next
+      }
+      return this
+    }
+
+    reverse4() {
+      let temp = this.head
+      this.head = this.tail
+      this.tail = temp
+      let prev = null
+      let next = temp.next
+      for (let i=0; i<this.length; i++) {
+        next=temp.next
+        temp.next = prev
+        prev=temp
+        temp=next
+      }
+      return this
+    }
+
+    reverse5() {
+      let temp = this.head
+      this.head = this.tail
+      this.tail = temp
+      let prev = null
+      let next = temp.next
+      for (let i=0; i<this.length; i++) {
+        next = temp.next
+        temp.next = prev
+        prev = temp
+        temp =next
+      }
+      return this 
+    }
+    
+  
 }
 
 const ll = new LinkedList(1);
 
+ll.push(2)
+ll.push(3)
 ll.push(4)
-ll.push(7)
-ll.push(9)
+ll.push(5)
 
 
 
-ll.reverse()
+
+ll.reverse4()
 
 console.log(ll);
