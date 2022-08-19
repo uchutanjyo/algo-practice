@@ -254,7 +254,20 @@ class LinkedList {
       }
       return this 
     }
-    
+    reverse6() {
+      let temp = this.head
+      this.head = this.tail
+      this.tail = temp
+      let prev = null
+      let next = temp.next
+      for (let i=0; i < this.length; i++) {
+        next = temp.next
+        temp.next = prev
+        prev = temp
+        temp = next
+      }
+      return this
+    }
   
 }
 
@@ -268,6 +281,6 @@ ll.push(5)
 
 
 
-ll.reverse4()
+ll.reverse6()
 
 console.log(ll);
