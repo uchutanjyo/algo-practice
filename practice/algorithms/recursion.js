@@ -19,14 +19,31 @@
 // but we could also say 4! is 4* 3! and so on until we reach 1 (our base case)
 
 function factorial(n) {
+    console.log(n)
     if(n === 1) return 1
     return n * factorial(n - 1)
 }
 
 console.log(factorial(4))
 
+
+
 // we call it like explained above.
 // then, 1 is returned to 2 ( 2* 1 = 2)
 // then 2 is returned to 3 (3 * 2 = 6)
 // then 6 is returne dto 4 (4 * 6 = 24)
 // returns 24
+
+function factorial2(n) {
+    if (n === 1) return 1
+    return (n * factorial2(n - 1))
+}
+
+console.log(factorial2(10))
+
+// a function to find factorial of a number can be written using RECURSION.
+
+// this function's return statement  calls itself with the provided value subtracted by 1,
+// multiplied by the provided value
+
+// until it gets to its base case (1), 1 is subtracted from n.

@@ -53,9 +53,9 @@ class HashTable {
         if (this.dataMap[index]) {
             console.log(this.dataMap[index])
             // iterate over the data
-            for (let i=0; i < this.dataMap[index].length; i++) {
+            for (let i = 0; i < this.dataMap[index].length; i++) {
                 // checks if the key value pair's [0] index (the key) is equal to the requested key (string), return the value (the [1] index of the key value array)
-                if(this.dataMap[index][i][0] === key) {
+                if (this.dataMap[index][i][0] === key) {
                     console.log(this.dataMap[index][i][1])
                     return this.dataMap[index][i][1]
                 }
@@ -69,10 +69,10 @@ class HashTable {
         let allKeys = [];
         for (let i = 0; i < this.dataMap.length; i++) {
             if (this.dataMap[i]) {
-            for (let j = 0; j < this.dataMap[i].length; j++) {
-                allKeys.push(this.dataMap[i][j][0])
+                for (let j = 0; j < this.dataMap[i].length; j++) {
+                    allKeys.push(this.dataMap[i][j][0])
+                }
             }
-        }
         }
         console.log(allKeys)
         return allKeys
@@ -94,7 +94,7 @@ const arr2 = [2, 3, 6]
 
 function itemInCommon(arr1, arr2) {
     for (let i = 0; i < arr1.length; i++) {
-        for (let j = 0; j < arr2.length; j ++) {
+        for (let j = 0; j < arr2.length; j++) {
             if (arr1[i] === arr2[j]) return true
         }
     }
@@ -106,15 +106,16 @@ function itemInCommon(arr1, arr2) {
 function itemInCommonEfficient(arr1, arr2) {
     let obj = {};
     for (let i = 0; i < arr1.length; i++) {
-       obj[arr1[i]] = true
+        obj[arr1[i]] = true
     }
-    for (let j = 0; j < arr2.length; j ++) {
-       if (obj[arr2[j]]) return true
+    for (let j = 0; j < arr2.length; j++) {
+        if (obj[arr2[j]]) return true
     }
     return false
-}   
+}
 
-console.log(itemInCommonEfficient(arr1, arr2))
+// console.log(itemInCommonEfficient(arr1, arr2))
+
 
 
 // const myHT = new HashTable(7)
@@ -134,3 +135,19 @@ console.log(itemInCommonEfficient(arr1, arr2))
 
 
 // console.log(myHT)
+
+class HashTable2 {
+    constructor(size = 7) {
+        this.dataMap = new Array(size)
+    }
+    _hash(key) {
+        let hash = 0;
+        for (let i = 0; i < key.length; i++) {
+            hash = hash + ((key.charAt(i) * 23) % this.dataMap.length)
+        }
+        return hash
+    }
+    get(key, value) {
+        
+    }
+}
