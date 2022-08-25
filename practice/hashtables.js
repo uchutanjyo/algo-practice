@@ -176,4 +176,3 @@ class HashTable3 {
 }
 
 const myHt3 = new HashTable3(7)
-console.log(myHt3.set('farts', 13))
