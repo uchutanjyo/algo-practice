@@ -164,6 +164,7 @@ class HashTable3 {
         }
         return hash
     }
+    
     set(key, value) {
         let index = this._hash(key)
         if (!this.dataMap[index]) {
