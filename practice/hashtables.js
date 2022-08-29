@@ -176,4 +176,4 @@ class HashTable3 {
 
 }
 
-const myHt3 = new HashTable3(7)
+const myHt4 = new HashTable3(7)
