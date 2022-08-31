@@ -133,13 +133,39 @@ class DoublyLinkedList {
         
 }
 
-const dll = new DoublyLinkedList(4)
+class Dll2 {
+    constructor(value) {
+        const newNode = new Node(value)
+        this.head = newNode;
+        this.tail = this.head
+        this.length = 1;
+    }
+    push(value) {
+        const newNode = new Node(value)
+        if (!this.head) {
+            this.head = newNode
+            this.tail = this.head
+        } else {
+        this.tail.next = newNode
+        newNode.prev = this.tail
+        this.tail = newNode
+    }
+        this.length++
+        return this
+    }
 
-dll.push(5)
+}
 
-dll.push(6)
+// const dll = new DoublyLinkedList(4)
 
-dll.insert(1, 1)
+// dll.push(5)
 
+// dll.push(6)
 
-console.log(dll)
+// dll.insert(1, 1)
+
+const dll2 = new Dll2(4)
+
+dll2.push(5)
+
+console.log(dll2)
